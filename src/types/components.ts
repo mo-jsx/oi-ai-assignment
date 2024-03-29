@@ -12,14 +12,16 @@ export interface ChartProps {
   color: string;
   XLabel?: string;
   YLabel?: string;
+  displayGrid?: boolean;
 }
 
 export interface PlotProps {
   chartType: string;
-  title?: string;
   color: string;
+  title?: string;
   style?: string;
   label?: Label;
+  displayGrid?: boolean;
 }
 
 export interface SelectProps {
@@ -35,10 +37,18 @@ export interface ChartConfigProps {
   setSelectedChart: Dispatch<SetStateAction<string>>;
   color: string;
   setColor: Dispatch<SetStateAction<string>>;
+  isTicked: boolean;
+  setIsTicked: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface ColorPickerProps {
   label: string;
   color: string;
   setColor: Dispatch<SetStateAction<string>>;
+}
+
+export interface CheckboxProps {
+  label: string;
+  isTicked: boolean;
+  setIsTicked: Dispatch<SetStateAction<boolean>>;
 }

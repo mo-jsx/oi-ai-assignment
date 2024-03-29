@@ -6,6 +6,7 @@ import ChartTitle from "./ChartTitle";
 function ChartContainer({ id }: { id: number }) {
   const [selectedChart, setSelectedChart] = useState("bar");
   const [color, setColor] = useState("#0000FF");
+  const [displayGrid, setDisplayGrid] = useState(false);
 
   return (
     <>
@@ -16,6 +17,8 @@ function ChartContainer({ id }: { id: number }) {
         setSelectedChart={setSelectedChart}
         color={color}
         setColor={setColor}
+        isTicked={displayGrid}
+        setIsTicked={setDisplayGrid}
       />
 
       <div className="h-[80%]">
@@ -23,6 +26,7 @@ function ChartContainer({ id }: { id: number }) {
           chartType={selectedChart}
           color={color}
           label={{ XLabel: "Value", YLabel: "M $" }}
+          displayGrid={displayGrid}
         />
       </div>
     </>

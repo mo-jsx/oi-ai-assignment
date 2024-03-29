@@ -6,11 +6,19 @@ import {
   XAxis,
   YAxis,
   Label,
+  CartesianGrid,
 } from "recharts";
 import { ChartProps } from "../../types/components";
 
 function Scatter(props: ChartProps) {
-  const { data, dataMax, color, XLabel = "Value", YLabel = "M $" } = props;
+  const {
+    data,
+    dataMax,
+    color,
+    XLabel = "Value",
+    YLabel = "M $",
+    displayGrid,
+  } = props;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -19,6 +27,7 @@ function Scatter(props: ChartProps) {
         width={1000}
         height={1000}
       >
+        {displayGrid && <CartesianGrid />}
         <XAxis
           type="category"
           dataKey="date"

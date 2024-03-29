@@ -4,7 +4,7 @@ import useFetchData from "../hooks/useFetchData";
 import { API_KEY } from "../utils/constants";
 
 function Plot(props: PlotProps) {
-  const { chartType, color, label } = props;
+  const { chartType, color, label, displayGrid } = props;
   const type = chartType.toLowerCase();
 
   const { data, loading, error } = useFetchData(
@@ -42,6 +42,7 @@ function Plot(props: PlotProps) {
           color={color}
           XLabel={label?.XLabel}
           YLabel={label?.YLabel}
+          displayGrid={displayGrid}
         />
       );
 
@@ -53,6 +54,7 @@ function Plot(props: PlotProps) {
           color={color}
           XLabel={label?.XLabel}
           YLabel={label?.YLabel}
+          displayGrid={displayGrid}
         />
       );
 
@@ -64,6 +66,7 @@ function Plot(props: PlotProps) {
           color={color}
           XLabel={label?.XLabel}
           YLabel={label?.YLabel}
+          displayGrid={displayGrid}
         />
       );
   }

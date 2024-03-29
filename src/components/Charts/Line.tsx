@@ -6,11 +6,19 @@ import {
   Tooltip,
   ResponsiveContainer,
   Label,
+  CartesianGrid,
 } from "recharts";
 import { ChartProps } from "../../types/components";
 
 function Line(props: ChartProps) {
-  const { data, dataMax, color, XLabel = "Value", YLabel = "M $" } = props;
+  const {
+    data,
+    dataMax,
+    color,
+    XLabel = "Value",
+    YLabel = "M $",
+    displayGrid,
+  } = props;
 
   return (
     <ResponsiveContainer width="100%" height="100%" id="line-chart">
@@ -20,6 +28,7 @@ function Line(props: ChartProps) {
         width={1000}
         height={1000}
       >
+        {displayGrid && <CartesianGrid />}
         <RLine type="monotone" dataKey="value" stroke={color} dot={false} />
         <XAxis
           dataKey="date"
@@ -34,7 +43,7 @@ function Line(props: ChartProps) {
           tickFormatter={(val: string) => val.toString().split(".")[0]}
           label={{ value: YLabel, angle: -90, position: "left" }}
         />
-        <Tooltip />
+        <Tooltip cursor={{ strokeDasharray: "3 3" }} />
       </LineChart>
     </ResponsiveContainer>
   );
