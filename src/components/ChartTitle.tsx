@@ -1,8 +1,11 @@
 import { useState, ChangeEvent } from "react";
+import { useAppDispatch } from "../app/reduxHooks";
+import { removeChart } from "../app/slices/chartSlice";
 
-function ChartTitle() {
+function ChartTitle({ id }: { id: number }) {
   const [title, setTitle] = useState("Title");
   const [isInputVisible, setIsInputVisible] = useState(false);
+  const dispatch = useAppDispatch();
 
   const enterHandler = (e: KeyboardEvent) => {
     if (e.key == "Enter") {
@@ -46,6 +49,7 @@ function ChartTitle() {
             <h2
               role="button"
               className="text-[12px] hover:cursor-pointer hover:text-blue-500 hover:underline"
+              onClick={() => dispatch(removeChart(id))}
             >
               Delete
             </h2>

@@ -3,13 +3,13 @@ import Plot from "./Plot";
 import ChartConfig from "./ChartConfig";
 import ChartTitle from "./ChartTitle";
 
-function ChartContainer() {
+function ChartContainer({ id }: { id: number }) {
   const [selectedChart, setSelectedChart] = useState("bar");
   const [color, setColor] = useState("#0000FF");
 
   return (
     <>
-      <ChartTitle />
+      <ChartTitle id={id} />
 
       <ChartConfig
         selectedChart={selectedChart}
