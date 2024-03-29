@@ -1,4 +1,4 @@
-import { Bar } from "./Charts";
+import { Bar, Line, Scatter } from "./Charts";
 import { PlotProps } from "../types/components";
 import useFetchData from "../hooks/useFetchData";
 import { API_KEY } from "../utils/constants";
@@ -28,7 +28,7 @@ function Plot(props: PlotProps) {
     );
 
   if (data) {
-    const observations = data.observations;
+    const { observations } = data;
 
     const dataMax = Math.max(
       ...data?.observations.map((o) => parseInt(o.value))
@@ -40,8 +40,30 @@ function Plot(props: PlotProps) {
           data={observations}
           dataMax={dataMax}
           color={color}
-          XLabel={label!.XLabel}
-          YLabel={label!.YLabel}
+          XLabel={label?.XLabel}
+          YLabel={label?.YLabel}
+        />
+      );
+
+    if (type == "line")
+      return (
+        <Line
+          data={observations}
+          dataMax={dataMax}
+          color={color}
+          XLabel={label?.XLabel}
+          YLabel={label?.YLabel}
+        />
+      );
+
+    if (type == "scatter")
+      return (
+        <Scatter
+          data={observations}
+          dataMax={dataMax}
+          color={color}
+          XLabel={label?.XLabel}
+          YLabel={label?.YLabel}
         />
       );
   }
