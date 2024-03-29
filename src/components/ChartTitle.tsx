@@ -1,33 +1,54 @@
 import { useState, ChangeEvent } from "react";
 import { useAppDispatch } from "../app/reduxHooks";
-import { removeChart } from "../app/slices/chartSlice";
+import { removeChart, updateChartTitle } from "../app/slices/chartSlice";
 
-function ChartTitle({ id }: { id: number }) {
-  const [title, setTitle] = useState("Title");
+function Message() {
+  return (
+    <p className="text-[12px] m-0 p-0 mt-1 text-blue-500">
+      Press
+      <span className="mx-1 px-[2px] border border-blue-500 text-white bg-blue-500 rounded-sm">
+        Enter &crarr;
+      </span>
+      to update chart title
+    </p>
+  );
+}
+
+function ChartTitle({ id, title }: { id: number; title: string }) {
+  const [iTitle, setITitle] = useState(title);
   const [isInputVisible, setIsInputVisible] = useState(false);
   const dispatch = useAppDispatch();
 
   const enterHandler = (e: KeyboardEvent) => {
     if (e.key == "Enter") {
+      dispatch(updateChartTitle({ id: id, title: iTitle }));
       setIsInputVisible(false);
     }
+  };
+
+  const handleBlur = () => {
+    dispatch(updateChartTitle({ id: id, title: iTitle }));
+    setIsInputVisible(false);
   };
 
   return (
     <div>
       {isInputVisible && (
-        <input
-          type="text"
-          value={title}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setTitle(e.target.value)
-          }
-          placeholder="Chart..."
-          className="border-2 border-black px-2 w-full"
-          onBlur={() => setIsInputVisible(false)}
-          onKeyDown={enterHandler}
-          autoFocus={true}
-        />
+        <>
+          <input
+            type="text"
+            value={iTitle}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setITitle(e.target.value)
+            }
+            placeholder="Chart..."
+            className="border-2 border-black px-2 w-full"
+            onBlur={() => handleBlur()}
+            onKeyDown={enterHandler}
+            autoFocus={true}
+          />
+          <Message />
+        </>
       )}
       {!isInputVisible && (
         <div className="flex flex-row justify-between">

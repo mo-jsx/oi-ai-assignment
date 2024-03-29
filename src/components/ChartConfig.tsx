@@ -1,31 +1,40 @@
+import {
+  updateChartColor,
+  updateChartGrid,
+  updateChartType,
+} from "../app/slices/chartSlice";
 import { ChartConfigProps } from "../types/components";
 import { Checkbox, ColorPicker, Select } from "./core";
 
 const charts = ["Bar", "Line", "Scatter"];
 
 function ChartConfig(props: ChartConfigProps) {
-  const {
-    selectedChart,
-    setSelectedChart,
-    color,
-    setColor,
-    isTicked,
-    setIsTicked,
-  } = props;
+  const { id, chartType, color, displayGrid } = props;
 
   return (
     <div className="flex flex-row justify-center gap-2">
       <Select
+        id={id}
         label={"Chart type"}
-        selected={selectedChart}
-        setSelected={setSelectedChart}
+        selected={chartType}
+        setSelected={updateChartType}
         options={charts}
         defaultOption={"Pick a chart"}
       />
 
-      <ColorPicker label={"Pick Color"} color={color} setColor={setColor} />
+      <ColorPicker
+        id={id}
+        label={"Pick Color"}
+        color={color}
+        setColor={updateChartColor}
+      />
 
-      <Checkbox label={"Grid"} isTicked={isTicked} setIsTicked={setIsTicked} />
+      <Checkbox
+        id={id}
+        label={"Grid"}
+        isTicked={displayGrid}
+        setIsTicked={updateChartGrid}
+      />
     </div>
   );
 }

@@ -1,15 +1,16 @@
 import { Bar, Line, Scatter } from "./Charts";
 import { PlotProps } from "../types/components";
 import useFetchData from "../hooks/useFetchData";
-import { API_KEY } from "../utils/constants";
+import { API_CODE, API_ENDPOINT, API_KEY } from "../utils/constants";
 
 function Plot(props: PlotProps) {
-  const { chartType, color, label, displayGrid } = props;
-  const type = chartType.toLowerCase();
+  const { chart } = props;
+
+  const type = chart.type.toLowerCase();
 
   const { data, loading, error } = useFetchData(
-    "series/observations",
-    "GNPCA",
+    API_ENDPOINT,
+    API_CODE,
     API_KEY
   );
 
@@ -39,10 +40,10 @@ function Plot(props: PlotProps) {
         <Bar
           data={observations}
           dataMax={dataMax}
-          color={color}
-          XLabel={label?.XLabel}
-          YLabel={label?.YLabel}
-          displayGrid={displayGrid}
+          color={chart.color}
+          XLabel={chart.XLabel}
+          YLabel={chart.YLabel}
+          displayGrid={chart.grid}
         />
       );
 
@@ -51,10 +52,10 @@ function Plot(props: PlotProps) {
         <Line
           data={observations}
           dataMax={dataMax}
-          color={color}
-          XLabel={label?.XLabel}
-          YLabel={label?.YLabel}
-          displayGrid={displayGrid}
+          color={chart.color}
+          XLabel={chart.XLabel}
+          YLabel={chart.YLabel}
+          displayGrid={chart.grid}
         />
       );
 
@@ -63,10 +64,10 @@ function Plot(props: PlotProps) {
         <Scatter
           data={observations}
           dataMax={dataMax}
-          color={color}
-          XLabel={label?.XLabel}
-          YLabel={label?.YLabel}
-          displayGrid={displayGrid}
+          color={chart.color}
+          XLabel={chart.XLabel}
+          YLabel={chart.YLabel}
+          displayGrid={chart.grid}
         />
       );
   }

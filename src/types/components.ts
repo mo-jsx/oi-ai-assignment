@@ -1,10 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
 import { FredSeriesObservation } from "./series";
-
-type Label = {
-  XLabel: string;
-  YLabel: string;
-};
 
 export interface ChartProps {
   data: FredSeriesObservation[];
@@ -15,40 +9,47 @@ export interface ChartProps {
   displayGrid?: boolean;
 }
 
-export interface PlotProps {
-  chartType: string;
+export interface Chart {
+  id: number;
+  title: string;
+  type: string;
   color: string;
-  title?: string;
+  grid?: boolean;
+  XLabel?: string;
+  YLabel?: string;
   style?: string;
-  label?: Label;
-  displayGrid?: boolean;
+}
+
+export interface PlotProps {
+  chart: Chart;
 }
 
 export interface SelectProps {
+  id: number;
   label: string;
   selected: string;
-  setSelected: Dispatch<SetStateAction<string>>;
+  setSelected: Function;
   options: string[];
   defaultOption: string;
 }
 
 export interface ChartConfigProps {
-  selectedChart: string;
-  setSelectedChart: Dispatch<SetStateAction<string>>;
+  id: number;
+  chartType: string;
   color: string;
-  setColor: Dispatch<SetStateAction<string>>;
-  isTicked: boolean;
-  setIsTicked: Dispatch<SetStateAction<boolean>>;
+  displayGrid: boolean;
 }
 
 export interface ColorPickerProps {
+  id: number;
   label: string;
   color: string;
-  setColor: Dispatch<SetStateAction<string>>;
+  setColor: (args: any) => any;
 }
 
 export interface CheckboxProps {
+  id: number;
   label: string;
   isTicked: boolean;
-  setIsTicked: Dispatch<SetStateAction<boolean>>;
+  setIsTicked: (args: any) => any;
 }

@@ -1,8 +1,11 @@
 import { FormEvent } from "react";
 import { SelectProps } from "../../types/components";
+import { useAppDispatch } from "../../app/reduxHooks";
 
 function Select(props: SelectProps) {
-  const { label, selected, setSelected, options, defaultOption } = props;
+  const { id, label, selected, setSelected, options, defaultOption } = props;
+
+  const dispatch = useAppDispatch();
 
   return (
     <div>
@@ -15,9 +18,9 @@ function Select(props: SelectProps) {
         name={`chart-${selected}`}
         id={`chart-${selected}`}
         value={selected}
-        onChange={(e: FormEvent<HTMLSelectElement>) =>
-          setSelected(e.currentTarget.value)
-        }
+        onChange={(e: FormEvent<HTMLSelectElement>) => {
+          dispatch(setSelected({ id: id, newType: e.currentTarget.value }));
+        }}
       >
         <option value={""} disabled={true}>
           {defaultOption}

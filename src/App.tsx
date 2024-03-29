@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "./app/reduxHooks";
 import { addChart } from "./app/slices/chartSlice";
 import ChartContainer from "./components/ChartContainer";
-import { getID } from "./utils/getID";
+import { createChart } from "./utils/createChart";
 
 function App() {
   const { charts } = useAppSelector((state) => state.charts);
@@ -12,7 +12,7 @@ function App() {
       <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-6 xl:grid-cols-12 gap-4 bg-violet-200 border-2 border-black bg-violet p-4 h-full overflow-y-auto">
         <div
           className="grid place-content-center col-span-full md:col-span-3 xl:col-span-4 border-2 border-slate-500 bg-slate-200 w-full h-[450px] cursor-pointer"
-          onClick={() => dispatch(addChart(getID()))}
+          onClick={() => dispatch(addChart(createChart()))}
         >
           <h2 className="text-9xl text-slate-500 text-center">+</h2>
           <h3 className="text-3xl text-slate-500 text-center">
@@ -20,12 +20,12 @@ function App() {
           </h3>
         </div>
 
-        {[...charts]?.reverse().map((chartId) => (
+        {[...charts]?.reverse().map((chart) => (
           <div
             className="col-span-full md:col-span-3 xl:col-span-4 border-2 border-black bg-white p-1 w-full h-[450px]"
-            key={chartId}
+            key={chart.id}
           >
-            <ChartContainer id={chartId} />
+            <ChartContainer id={chart.id} />
           </div>
         ))}
       </div>

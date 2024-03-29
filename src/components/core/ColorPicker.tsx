@@ -1,15 +1,15 @@
 import { ChangeEvent } from "react";
 import { ColorPickerProps } from "../../types/components";
 import { debounce } from "../../utils/debounce";
+import { useAppDispatch } from "../../app/reduxHooks";
 
 function ColorPicker(props: ColorPickerProps) {
-  const { label, color, setColor } = props;
+  const { id, label, color, setColor } = props;
+  const dispatch = useAppDispatch();
 
   // Debounce color change
-  const debouncedSetColor = debounce(setColor, 100);
-
   const handleColorChange = (e: ChangeEvent<HTMLInputElement>) =>
-    debouncedSetColor(e.target.value);
+    debounce(dispatch(setColor({ id: id, newColor: e.target.value })), 100);
 
   return (
     <div>

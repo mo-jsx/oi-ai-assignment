@@ -1,33 +1,26 @@
-import { useState } from "react";
 import Plot from "./Plot";
 import ChartConfig from "./ChartConfig";
 import ChartTitle from "./ChartTitle";
+import { useAppSelector } from "../app/reduxHooks";
 
 function ChartContainer({ id }: { id: number }) {
-  const [selectedChart, setSelectedChart] = useState("bar");
-  const [color, setColor] = useState("#0000FF");
-  const [displayGrid, setDisplayGrid] = useState(false);
+  const chart = useAppSelector(
+    (state) => state.charts.charts.find((chart) => chart.id == id)!
+  );
 
   return (
     <>
-      <ChartTitle id={id} />
+      <ChartTitle id={chart.id} title={chart.title} />
 
       <ChartConfig
-        selectedChart={selectedChart}
-        setSelectedChart={setSelectedChart}
-        color={color}
-        setColor={setColor}
-        isTicked={displayGrid}
-        setIsTicked={setDisplayGrid}
+        id={chart.id}
+        chartType={chart.type}
+        color={chart.color}
+        displayGrid={chart.grid!}
       />
 
       <div className="h-[80%]">
-        <Plot
-          chartType={selectedChart}
-          color={color}
-          label={{ XLabel: "Value", YLabel: "M $" }}
-          displayGrid={displayGrid}
-        />
+        <Plot chart={chart} />
       </div>
     </>
   );

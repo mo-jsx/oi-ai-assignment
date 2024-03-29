@@ -1,7 +1,9 @@
+import { useAppDispatch } from "../../app/reduxHooks";
 import { CheckboxProps } from "../../types/components";
 
 function Checkbox(props: CheckboxProps) {
-  const { label, isTicked, setIsTicked } = props;
+  const { id, label, isTicked, setIsTicked } = props;
+  const dispatch = useAppDispatch();
 
   return (
     <div>
@@ -10,7 +12,7 @@ function Checkbox(props: CheckboxProps) {
         name="checkbox"
         id="checkbox"
         checked={isTicked}
-        onChange={() => setIsTicked(!isTicked)}
+        onChange={() => dispatch(setIsTicked({ id: id, newGrid: !isTicked }))}
       />
       <label htmlFor="checkbox" className="font-bold ml-1">
         {label}
