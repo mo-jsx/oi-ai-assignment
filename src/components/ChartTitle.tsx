@@ -63,13 +63,13 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
             <h2
               onClick={() => setIsInputVisible(true)}
               role="button"
-              className="text-[12px] hover:cursor-pointer hover:text-blue-500 hover:underline"
+              className="container_options"
             >
               Edit
             </h2>
             <h2
               role="button"
-              className="text-[12px] hover:cursor-pointer hover:text-blue-500 hover:underline"
+              className="container_options"
               onClick={() => dispatch(removeChart(id))}
             >
               Delete

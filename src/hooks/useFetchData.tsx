@@ -17,23 +17,28 @@ function useFetchData(
   const url = `api/${uri}?series_id=${seriesId}&api_key=${apiKey}&file_type=json`;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const cachedData = localStorage.getItem("fred-data");
+
+    if (cachedData) {
       try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`Error fetching data: ${response.statusText}`);
-        }
-
-        const jsonData = await response.json();
-        setData(jsonData);
+        const parsedData = JSON.parse(cachedData);
+        setData(parsedData);
       } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
+        console.log("Error parsing cache data: ", error);
       }
-    };
+    }
 
-    fetchData();
+    setLoading(true);
+    fetch(url)
+      .then((res) => res.json())
+      .then((fetchedData) => {
+        setData(fetchedData);
+        localStorage.setItem("fred-data", JSON.stringify(fetchedData));
+      })
+      .catch((error) => setError(error))
+      .finally(() => {
+        setLoading(false);
+      });
   }, [uri, seriesId]);
 
   return { data, loading, error };

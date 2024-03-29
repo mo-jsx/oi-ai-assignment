@@ -16,14 +16,14 @@ function Plot(props: PlotProps) {
 
   if (loading)
     return (
-      <div className="grid place-content-center h-full">
+      <div className="container_plot_fallback">
         <h1 className="text-xl">Data is coming..</h1>
       </div>
     );
 
   if (error)
     return (
-      <div className="grid place-content-center h-full">
+      <div className="container_plot_fallback">
         <h1 className="text-xl">An error has occured!</h1>
       </div>
     );
