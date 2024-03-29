@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, KeyboardEvent } from "react";
 import { useAppDispatch } from "../app/reduxHooks";
 import { removeChart, updateChartTitle } from "../app/slices/chartSlice";
 
@@ -19,7 +19,7 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const dispatch = useAppDispatch();
 
-  const enterHandler = (e: KeyboardEvent) => {
+  const enterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key == "Enter") {
       dispatch(updateChartTitle({ id: id, title: iTitle }));
       setIsInputVisible(false);
