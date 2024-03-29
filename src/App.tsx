@@ -1,3 +1,5 @@
+import ChartContainer from "./components/ChartContainer";
+
 function App() {
   return (
     <div className=" h-screen w-[100%] bg-white p-4">
@@ -7,6 +9,10 @@ function App() {
           <h3 className="text-3xl text-slate-500 text-center">
             Add a new chart
           </h3>
+        </div>
+
+        <div className="col-span-full md:col-span-3 xl:col-span-4 border-2 border-black bg-white p-1 w-full h-[450px]">
+          <ChartContainer />
         </div>
       </div>
     </div>
