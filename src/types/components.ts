@@ -33,4 +33,12 @@ export interface SelectProps {
 export interface ChartConfigProps {
   selectedChart: string;
   setSelectedChart: Dispatch<SetStateAction<string>>;
+  color: string;
+  setColor: Dispatch<SetStateAction<string>>;
+}
+
+export interface ColorPickerProps {
+  label: string;
+  color: string;
+  setColor: Dispatch<SetStateAction<string>>;
 }

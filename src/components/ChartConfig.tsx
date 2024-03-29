@@ -1,10 +1,10 @@
 import { ChartConfigProps } from "../types/components";
-import { Select } from "./core";
+import { ColorPicker, Select } from "./core";
 
 const charts = ["Bar", "Line", "Scatter"];
 
 function ChartConfig(props: ChartConfigProps) {
-  const { selectedChart, setSelectedChart } = props;
+  const { selectedChart, setSelectedChart, color, setColor } = props;
 
   return (
     <div className="flex flex-row justify-center gap-2">
@@ -15,6 +15,8 @@ function ChartConfig(props: ChartConfigProps) {
         options={charts}
         defaultOption={"Pick a chart"}
       />
+
+      <ColorPicker label={"Pick Color"} color={color} setColor={setColor} />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import ChartTitle from "./ChartTitle";
 
 function ChartContainer() {
   const [selectedChart, setSelectedChart] = useState("bar");
+  const [color, setColor] = useState("#0000FF");
 
   return (
     <>
@@ -13,12 +14,14 @@ function ChartContainer() {
       <ChartConfig
         selectedChart={selectedChart}
         setSelectedChart={setSelectedChart}
+        color={color}
+        setColor={setColor}
       />
 
       <div className="h-[80%]">
         <Plot
           chartType={selectedChart}
-          color={"#FF0000"}
+          color={color}
           label={{ XLabel: "Value", YLabel: "M $" }}
         />
       </div>
