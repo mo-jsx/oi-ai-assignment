@@ -6,7 +6,7 @@ function Checkbox(props: CheckboxProps) {
   const dispatch = useAppDispatch();
 
   return (
-    <div>
+    <div className="flex flex-col-reverse gap-4 xl:flex-row xl:gap-0">
       <input
         type="checkbox"
         name="checkbox"

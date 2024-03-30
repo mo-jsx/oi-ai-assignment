@@ -17,9 +17,11 @@ function ChartContainer({ id }: { id: number }) {
         chartType={chart.type}
         color={chart.color}
         displayGrid={chart.grid!}
+        style={chart.style!}
+        interval={chart.interval!}
       />
 
-      <div className="h-[80%]">
+      <div className="h-[75%]">
         <Plot chart={chart} />
       </div>
     </>

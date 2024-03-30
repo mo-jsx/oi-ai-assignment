@@ -52,24 +52,26 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
       )}
       {!isInputVisible && (
         <div className="flex flex-row justify-between">
-          <h2
-            className="text-2xl font-bold text-center pb-2 hover:cursor-pointer"
-            onClick={() => setIsInputVisible(true)}
-            title="Click to update title"
-          >
-            {title}
-          </h2>
-          <div>
+          <div className="pb-2">
             <h2
+              className="text-2xl font-bold text-center hover:cursor-pointer"
+              onClick={() => setIsInputVisible(true)}
+              title="Click to update title"
+            >
+              {title}
+            </h2>{" "}
+            <p
               onClick={() => setIsInputVisible(true)}
               role="button"
-              className="container_options"
+              className="container_options text-blue-500"
             >
-              Edit
-            </h2>
+              Edit Title
+            </p>
+          </div>
+          <div>
             <h2
               role="button"
-              className="container_options"
+              className="container_options text-red-500"
               onClick={() => dispatch(removeChart(id))}
             >
               Delete

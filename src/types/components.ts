@@ -1,12 +1,19 @@
 import { FredSeriesObservation } from "./series";
 
 export interface ChartProps {
+  id: number;
   data: FredSeriesObservation[];
   dataMax: number;
   color: string;
   XLabel?: string;
   YLabel?: string;
   displayGrid?: boolean;
+  style?: string;
+  interval?:
+    | "preserveStart"
+    | "preserveEnd"
+    | "preserveStartEnd"
+    | "equidistantPreserveStart";
 }
 
 export interface Chart {
@@ -18,6 +25,11 @@ export interface Chart {
   XLabel?: string;
   YLabel?: string;
   style?: string;
+  interval?:
+    | "preserveStart"
+    | "preserveEnd"
+    | "preserveStartEnd"
+    | "equidistantPreserveStart";
 }
 
 export interface PlotProps {
@@ -27,6 +39,7 @@ export interface PlotProps {
 export interface SelectProps {
   id: number;
   label: string;
+  property: string;
   selected: string;
   setSelected: Function;
   options: string[];
@@ -38,6 +51,12 @@ export interface ChartConfigProps {
   chartType: string;
   color: string;
   displayGrid: boolean;
+  style: string;
+  interval:
+    | "preserveStart"
+    | "preserveEnd"
+    | "preserveStartEnd"
+    | "equidistantPreserveStart";
 }
 
 export interface ColorPickerProps {

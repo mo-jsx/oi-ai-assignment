@@ -38,36 +38,45 @@ function Plot(props: PlotProps) {
     if (type == "bar")
       return (
         <Bar
+          id={chart.id}
           data={observations}
           dataMax={dataMax}
           color={chart.color}
           XLabel={chart.XLabel}
           YLabel={chart.YLabel}
           displayGrid={chart.grid}
+          style={chart.style}
+          interval={chart.interval}
         />
       );
 
     if (type == "line")
       return (
         <Line
+          id={chart.id}
           data={observations}
           dataMax={dataMax}
           color={chart.color}
           XLabel={chart.XLabel}
           YLabel={chart.YLabel}
           displayGrid={chart.grid}
+          style={chart.style}
+          interval={chart.interval}
         />
       );
 
     if (type == "scatter")
       return (
         <Scatter
+          id={chart.id}
           data={observations}
           dataMax={dataMax}
           color={chart.color}
           XLabel={chart.XLabel}
           YLabel={chart.YLabel}
           displayGrid={chart.grid}
+          style={chart.style}
+          interval={chart.interval}
         />
       );
   }

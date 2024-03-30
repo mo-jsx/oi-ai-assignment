@@ -8,11 +8,11 @@
     }
     
     .main {
-        @apply grid grid-flow-row-dense grid-cols-1 md:grid-cols-6 xl:grid-cols-12 gap-4 bg-violet-200 border-2 border-black p-4 h-full overflow-y-auto;
+        @apply grid grid-flow-row-dense grid-cols-1 md:grid-cols-6 2xl:grid-cols-12 gap-4 bg-violet-200 border-2 border-black p-4 h-full overflow-y-auto;
     }
 
     .container {
-        @apply col-span-full md:col-span-3 xl:col-span-4 border-2 w-full h-[450px];
+        @apply col-span-full md:col-span-3 2xl:col-span-4 border-2 w-full h-[600px] md:h-[600px] lg:h-[500px] xl:h-[400px];
     }
     .container--empty {
         @apply grid place-content-center border-slate-500 bg-slate-200 cursor-pointer;
@@ -22,7 +22,7 @@
     }
 
     .container--solid {
-        @apply border-black bg-white p-1;
+        @apply border-black bg-white p-2;
     }
     .container_options {
         @apply text-[12px] hover:cursor-pointer hover:text-blue-500 hover:underline;

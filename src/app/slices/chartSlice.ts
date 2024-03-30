@@ -134,6 +134,28 @@ export const chartSlice = createSlice({
         console.error(`Chart with ID ${action.payload.id} not found`);
       }
     },
+
+    updateInterval: (
+      state,
+      action: PayloadAction<{
+        id: number;
+        newInterval:
+          | "preserveStart"
+          | "preserveEnd"
+          | "preserveStartEnd"
+          | "equidistantPreserveStart"
+          | undefined;
+      }>
+    ) => {
+      const index = state.charts.findIndex(
+        (chart) => chart.id === action.payload.id
+      );
+      if (index !== -1) {
+        state.charts[index].interval = action.payload.newInterval;
+      } else {
+        console.error(`Chart with ID ${action.payload.id} not found`);
+      }
+    },
   },
 });
 
@@ -147,6 +169,7 @@ export const {
   updateXLabel,
   updateYLabel,
   updateStyle,
+  updateInterval,
 } = chartSlice.actions;
 
 export const selectChart = (state: RootState) => state.charts;
