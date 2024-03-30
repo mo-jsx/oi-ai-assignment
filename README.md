@@ -57,11 +57,15 @@ This will start the application on a local development server, typically accessi
 #### Unit Tests
 
 ```bash
-npm run test
+npm run test:unit
 ```
 
 #### E2E Tests
 
 ```bash
+# Run Cypress with GUI
 npm run cypress:open
+
+# Run Cypress with no GUI
+npm run cypress:no-gui
 ```
