@@ -10,6 +10,7 @@
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "cypress:open": "cypress open",
+    "cypress:no-gui": "cypress run --headless",
     "preview": "vite preview"
   },
   "dependencies": {
