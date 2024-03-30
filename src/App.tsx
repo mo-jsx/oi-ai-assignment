@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="body">
-      <div className="main">
+      <main className="main">
         <div
           className="container container--empty"
           onClick={() => dispatch(addChart(createChart()))}
@@ -24,7 +24,7 @@ function App() {
             <ChartContainer id={chart.id} />
           </div>
         ))}
-      </div>
+      </main>
     </div>
   );
 }
