@@ -46,6 +46,7 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
             onBlur={() => handleBlur()}
             onKeyDown={enterHandler}
             autoFocus={true}
+            data-cy="chart-title-input"
           />
           <Message />
         </>
@@ -57,6 +58,7 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
               className="text-2xl font-bold text-center hover:cursor-pointer"
               onClick={() => setIsInputVisible(true)}
               title="Click to update title"
+              data-cy="chart-title"
             >
               {title}
             </h2>{" "}
@@ -64,6 +66,7 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
               onClick={() => setIsInputVisible(true)}
               role="button"
               className="container_options text-blue-500"
+              data-cy="chart-edit-title"
             >
               Edit Title
             </p>
@@ -73,6 +76,7 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
               role="button"
               className="container_options text-red-500"
               onClick={() => dispatch(removeChart(id))}
+              data-cy="delete-chart"
             >
               Delete
             </h2>

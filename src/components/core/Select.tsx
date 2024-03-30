@@ -37,6 +37,7 @@ function Select(props: SelectProps) {
         id={`chart-${selected}`}
         value={selected}
         onChange={handleChange}
+        data-cy={`chart-select-${property}`}
       >
         <option value={""} disabled={true}>
           {defaultOption}

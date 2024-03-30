@@ -9,6 +9,7 @@
     "test:unit": "vitest --root src/",
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "cypress:open": "cypress open",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^1.4.0",
     "autoprefixer": "^10.4.19",
+    "cypress": "^13.7.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",

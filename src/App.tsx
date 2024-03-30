@@ -13,6 +13,7 @@ function App() {
         <div
           className="container container--empty"
           onClick={() => dispatch(addChart(createChart()))}
+          data-cy="create-chart-container"
         >
           <h2 className="text-9xl container_text--empty">+</h2>
           <h2 className="text-3xl container_text--empty">Add a new chart</h2>
