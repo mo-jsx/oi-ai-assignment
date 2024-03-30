@@ -38,7 +38,12 @@ describe("Bar Chart", () => {
     );
 
     const result = render(
-      <Bar data={data.observations} dataMax={dataMax} color={"#FF0000"} />
+      <Bar
+        data={data.observations}
+        dataMax={dataMax}
+        color={"#FF0000"}
+        id={0}
+      />
     );
 
     const bar = result.container.querySelector("#bar-chart");

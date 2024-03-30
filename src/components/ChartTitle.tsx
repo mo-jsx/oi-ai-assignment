@@ -1,22 +1,12 @@
 import { useState, ChangeEvent, KeyboardEvent } from "react";
 import { useAppDispatch } from "../app/reduxHooks";
 import { removeChart, updateChartTitle } from "../app/slices/chartSlice";
-
-function Message() {
-  return (
-    <p className="text-[12px] m-0 p-0 mt-1 text-blue-500">
-      Press
-      <span className="mx-1 px-[2px] border border-blue-500 text-white bg-blue-500 rounded-sm">
-        Enter &crarr;
-      </span>
-      to update chart title
-    </p>
-  );
-}
+import { FormMessage } from "./core";
 
 function ChartTitle({ id, title }: { id: number; title: string }) {
   const [iTitle, setITitle] = useState(title);
   const [isInputVisible, setIsInputVisible] = useState(false);
+
   const dispatch = useAppDispatch();
 
   const enterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -48,7 +38,7 @@ function ChartTitle({ id, title }: { id: number; title: string }) {
             autoFocus={true}
             data-cy="chart-title-input"
           />
-          <Message />
+          <FormMessage />
         </>
       )}
       {!isInputVisible && (
