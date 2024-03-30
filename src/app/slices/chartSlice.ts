@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import { Chart } from "../../types/components";
+import { ChartObj } from "../../types/components";
 
 export interface IinitialState {
-  charts: Chart[];
+  charts: ChartObj[];
 }
 
 const initialState: IinitialState = {
@@ -15,7 +15,7 @@ export const chartSlice = createSlice({
   initialState,
   reducers: {
     // Append a new chart
-    addChart: (state, action: PayloadAction<Chart>) => {
+    addChart: (state, action: PayloadAction<ChartObj>) => {
       state.charts = [...state.charts, action.payload];
     },
 

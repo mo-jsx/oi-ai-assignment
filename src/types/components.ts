@@ -16,7 +16,7 @@ export interface ChartProps {
     | "equidistantPreserveStart";
 }
 
-export interface Chart {
+export interface ChartObj {
   id: number;
   title: string;
   type: string;
@@ -33,7 +33,7 @@ export interface Chart {
 }
 
 export interface PlotProps {
-  chart: Chart;
+  chart: ChartObj;
 }
 
 export interface SelectProps {

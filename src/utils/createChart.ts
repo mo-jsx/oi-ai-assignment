@@ -1,8 +1,8 @@
-import { Chart } from "../types/components";
+import { ChartObj } from "../types/components";
 import { getID } from "./getID";
 
 export const createChart = () => {
-  const newChart: Chart = {
+  const newChart: ChartObj = {
     id: getID(),
     title: "Title",
     type: "bar",
